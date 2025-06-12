@@ -6,9 +6,10 @@ import {
   Scripts,
   ScrollRestoration,
 } from "react-router";
-
+import { ToastContainer } from "react-toastify";
 import type { Route } from "./+types/root";
 import "./app.css";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -23,6 +24,8 @@ export const links: Route.LinksFunction = () => [
   },
 ];
 
+
+const queryClient = new QueryClient();
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
@@ -34,15 +37,23 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <body>
         {children}
+        <ToastContainer aria-label="Toast notifications" />
         <ScrollRestoration />
         <Scripts />
+
       </body>
     </html>
   );
 }
 
 export default function App() {
-  return <Outlet />;
+  return (
+    <QueryClientProvider client={queryClient}>
+      <Layout>
+        <Outlet />
+      </Layout>
+    </QueryClientProvider>
+  )
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {

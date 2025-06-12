@@ -6,7 +6,7 @@ services:
     container_name: express_api
     restart: always
     ports:
-      - '3000:3000'
+      - '3080:3080'
     environment:
       - DATABASE_URL=postgres://postgres:postgres@db:5432/appdb
       - JWT_SECRET=algumasecreta
@@ -16,6 +16,14 @@ services:
       - ./api:/app
       - /app/node_modules
     command: sh -c "npm install && npm run start && node dist/index.js"
+
+  app:
+    build: ./client
+    container_name: vite_app
+    ports:
+      - '3000:3000'
+    depends_on:
+      - api
 
   db:
     image: postgres:15
