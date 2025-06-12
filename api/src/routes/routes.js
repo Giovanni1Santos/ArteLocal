@@ -17,9 +17,9 @@ router.post("/login", userController.loginEntity);
 //Router para produtos
 
 router.get("/produtos", produtoController.getEntities);
-router.post("/produtos", produtoController.postEntity);
-router.delete("/produtos", produtoController.deleteEntity);
-router.get("/produtos/:id", produtoController.getEntitiesById);
+router.post("/produto", verifyToken, produtoController.postEntity);
+router.delete("/produto", produtoController.deleteEntity);
+router.get("/produto/:id", produtoController.getEntitiesById);
 
 
 //Router para contatos

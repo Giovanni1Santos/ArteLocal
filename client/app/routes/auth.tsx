@@ -20,7 +20,7 @@ export default function AuthPage() {
 
     useEffect(() => {
         if (isSuccessLogin) {
-            navigate('/contatos');
+            navigate('/produtos');
         }
     }, [isSuccessLogin, navigate]);
 

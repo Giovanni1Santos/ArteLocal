@@ -4,7 +4,7 @@ import API_URL from "../../constants/AppConstants";
 import type { Produto } from "~/interface/Produto";
 
 const fetch = async (): AxiosPromise<Produto[]> => {
-    const response = await axios.get(`${API_URL}/contatos`, {});
+    const response = await axios.get(`${API_URL}/produtos`, {});
     return response;
 };
 
