@@ -29,7 +29,7 @@ export default function CreateProduto() {
         console.log("depois do if");
 
         addProduct({ ...formData, userId });
-        router('produtos');
+        router(-1);
     };
 
     return (

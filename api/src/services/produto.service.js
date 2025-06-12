@@ -14,7 +14,7 @@ const registerProduct = async (req, res) => {
 
     try {
         const createProduct = await Produto.create({
-            name,
+            nome,
             descricao,
             disp,
             userId
