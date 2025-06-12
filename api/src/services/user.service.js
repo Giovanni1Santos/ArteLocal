@@ -59,7 +59,7 @@ const login = async (req, res) => {
 
 }
 
-function isPasswordValid(password) {
+export function isPasswordValid(password) {
     const minLength = 8;
     const hasUpperCase = /[A-Z]/.test(password);
     const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
