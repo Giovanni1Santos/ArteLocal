@@ -1,154 +1,79 @@
-# 🧶 ArteLocal
+# 📇 API de Cadastro de Contatos (PostgreSQL)
+Este é o backend da aplicação de contatos usando PostgreSQL, Sequelize ORM, Express e autenticação com JWT. Ideal para bancos relacionais com validação forte de dados
 
-**ArteLocal** é uma plataforma educacional voltada para o cadastro e login de artesãos, desenvolvida como parte da disciplina **Alta Qualidade em Software** na Universidade SENAI CIMATEC. O objetivo é simular um projeto real de desenvolvimento de software, com foco em boas práticas, controle de versão e arquitetura limpa.
+# 🚀 Tecnologias Utilizadas
+- 🧩 Node.js
 
----
+- ⚙️ Express
 
-## 🎯 Objetivo da Sprint 1
+- 🐘 PostgreSQL
 
-Implementar o MVP com o cadastro e login de artesãos (CRUD completo com autenticação), seguindo um processo real de desenvolvimento definido pela equipe.
+- 🧾 Sequelize
 
----
+- 🔐 JWT (JSON Web Token)
 
-## 🚀 Tecnologias utilizadas
+- ⚙️ dotenv
 
-### 🔧 Back-end
-- Node.js + Express
-- PostgreSQL com Sequelize ORM
-- JWT (JSON Web Token) para autenticação
-- Docker + Docker Compose
-
-### 🌐 Front-end
-- React
-- Axios
-- React Router DOM
-
-### 🧪 Testes (próximas sprints)
-- Jest (unitários)
-- Selenium (E2E)
-
-### ⚙️ Processo de desenvolvimento
-- GitHub com Git Flow básico (`main` + `feature/*`)
-- Backlog no Jira
-- Protótipos no Figma
-- Documento de Visão (Google Docs)
-
----
-
-## 🏗️ Arquitetura do Projeto
+# ⚙️ Variáveis de Ambiente
+Crie um arquivo .env na raiz do projeto com o seguinte conteúdo:
 
 ```
-ArteLocal/
-├── api/
-│   └── src/
-│       ├── controllers/     # Lógica de negócio
-│       ├── models/          # Definição ORM (Sequelize)
-│       ├── routes/          # Endpoints REST
-│       ├── config/          # Conexão com banco de dados
-│       ├── app.js           # Inicialização do Express
-│       └── server.js        # Startup da API
-├── client/
-│   └── src/
-│       ├── pages/           # Login e Registro
-│       ├── components/      # Componentes reutilizáveis
-│       ├── services/        # Comunicação com API
-│       └── App.jsx          # Rotas principais
-├── docker-compose.yml       # Infraestrutura local com Docker
-├── .env                     # Segredos como JWT\_SECRET
-└── README.md                # Este arquivo
+DATABASE_URL=postgres://usuario:senha@localhost:5432/nome_do_banco
+JWT_SECRET=sua-chave-secreta
 ```
 
----
-
-## 🛠️ Como rodar o projeto localmente
-
-### Pré-requisitos
-- Node.js (v16+)
-- Docker e Docker Compose instalados
-
-### Passos
-
-1. Clone o repositório:
-   ```bash
-   git clone https://github.com/SEU_USUARIO/ArteLocal.git
-   cd ArteLocal
-   ```
-
-2. Crie o arquivo `.env` dentro da pasta `api/`:
-   ```
-   JWT_SECRET=segredo123
-   ```
-
-3. Suba os serviços com Docker:
-   ```bash
-   docker-compose up --build
-   ```
-
-4. Acesse:
-   - API (backend): `http://localhost:3001/api/artesaos`
-   - Front-end: `http://localhost:3000` *(se rodar com `npm start` dentro de `client/`)*
-
----
-
-## ✅ Funcionalidades entregues na Sprint 1
-
-* [x] Cadastro de artesãos (nome, email, senha com hash)
-* [x] Login com autenticação JWT
-* [x] Listagem, edição e exclusão de artesãos
-* [x] Comunicação entre front-end e back-end via API REST
-* [x] Banco de dados PostgreSQL com persistência via Sequelize
-* [x] Ambiente local com Docker Compose
-* [x] Estrutura de pastas seguindo arquitetura MVC
-* [x] Versionamento com Git Flow
-* [x] Protótipos criados no Figma
-* [x] Backlog da Sprint 1 no Jira
-* [x] Documento de Visão no Google Docs
-
----
-
-## 📌 Processo de desenvolvimento real seguido
-
-* **Coleta de Requisitos:** Workshop com artesãos fictícios (roleplay)
-* **Planejamento:** Backlog estruturado no Jira
-* **Prototipação:** Telas de cadastro/login no Figma
-* **Execução:** CRUD e autenticação JWT funcionando
-* **Controle de Versão:** Git Flow simplificado (`main` + `feature/*`)
-* **Revisão de Código:** Pull Requests com checklist de segurança básica (OWASP Top 10)
-* **Implantação local:** Docker Compose com API + PostgreSQL
-
----
-
-## 🗓️ Planejamento das Sprints
-
-### ✅ Sprint 1 – Cadastro de Artesãos
-* CRUD com autenticação via JWT
-* Infraestrutura Docker
-* Versionamento com Git Flow
-* Jira, Figma e Documento de Visão entregues
-
-### 🚧 Sprint 2 – Catálogo de Produtos
-* Cadastro e listagem de produtos
-* Testes unitários com Jest
-* Testes E2E com Selenium
-* Diagrama C4 simplificado
-
-### 🔜 Sprint 3 – Carrinho de Compras
-* Adição de produtos ao carrinho
-* Simulação de pagamento com TDD
-* Logs com console + arquivos
-* Cobertura de testes com GitHub Actions
-
----
-
-## 👥 Equipe
-
-* Giovanni Leão
-* Ralph Rodrigues
-* Ryan Bernardo
-
----
-
-## 📄 Licença
-
-Projeto desenvolvido exclusivamente para fins educacionais, no contexto da disciplina **Alta Qualidade em Software - 2025** (SENAI CIMATEC).
+# 📦 Instalação
 ```
+git clone https://github.com/Ryaannsz/rotas-express-postgre.git
+cd backend-postgres-contato
+npm install
+```
+# ▶️ Executando o Projeto
+```
+npx sequelize db:migrate
+npm run dev
+```
+
+# 📌 Funcionalidades da API
+Registro de usuário (/register)
+
+Login com JWT (/login)
+
+- CRUD de contatos:
+
+  - GET /contatos – Listar contatos
+
+  - POST /contatos – Criar novo contato
+
+  - PUT /contatos/:id – Atualizar contato
+
+  - DELETE /contatos/:id – Deletar contato
+
+Todas as rotas de contatos requerem autenticação via Bearer Token.
+
+# 🧪 Teste com Insomnia/Postman
+Faça login para obter um token JWT.
+
+Use o token para acessar as rotas protegidas enviando no header:
+
+```
+Authorization: Bearer <seu_token>
+```
+
+# 📄 Licença
+Este projeto está sob a licença MIT.
+
+
+# Vídeo de funcionamento do login e registro
+[![Watch the video](https://img.youtube.com/vi/QJPFw77ijw0/maxresdefault.jpg)](https://youtu.be/QJPFw77ijw0)
+
+# Vídeo de funcionamento do CRUD de contatos
+[![Watch the video](https://img.youtube.com/vi/73-zqrstS9M/maxresdefault.jpg)](https://youtu.be/73-zqrstS9M)
+
+
+
+
+
+
+
+
