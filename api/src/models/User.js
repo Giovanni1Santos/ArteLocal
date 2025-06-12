@@ -16,7 +16,7 @@ const User = sequelize.define('User', {
     validate: {
       isEmail: true
     },
-    set(value: string) {
+    set(value) {
       this.setDataValue('email', value.trim().toLowerCase());
     }
   }

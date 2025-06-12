@@ -1,4 +1,4 @@
-import Produto from '../models/Produto'
+import Produto from '../models/Produto.js'
 
 const registerProduct = async (req, res) => {
 

@@ -1,4 +1,4 @@
-import produtoService from '../services/produto.service'
+import produtoService from '../services/produto.service.js'
 
 const getEntities = async (res) => {
     try {
