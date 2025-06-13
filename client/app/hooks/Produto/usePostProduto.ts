@@ -20,9 +20,9 @@ export function usePostProduto() {
 
             return response.data;
         }, onSuccess: () => {
-            showToast("Contato adicionado com sucesso!", "success")
+            showToast("Produto adicionado com sucesso!", "success")
         }, onError: () => {
-            showToast("Erro ao adicionar o contato!", "error")
+            showToast("Erro ao adicionar o Produto!", "error")
         }
     });
 }

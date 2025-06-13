@@ -60,6 +60,9 @@ export default function AuthPage() {
             login(formData);
         } else {
             registro(formData);
+            if (isSuccessRegister) {
+                navigate('/auth')
+            }
         }
     };
 

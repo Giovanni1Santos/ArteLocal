@@ -38,17 +38,5 @@ services:
     volumes:
       - pgdata:/var/lib/postgresql/data
 
-  selenium-test:
-    image: seleniarm/node-chromium:latest
-    working_dir: /tests
-    volumes:
-      - ./client/tests/e2e:/tests
-      - ./client/package.json:/tests/package.json
-      - ./client/package-lock.json:/tests/package-lock.json
-    depends_on:
-      - app
-    entrypoint: >
-      sh -c "npm install && npx jest --runInBand *.test.js"
-
 volumes:
   pgdata:

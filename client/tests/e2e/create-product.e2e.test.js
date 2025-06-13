@@ -1,10 +1,11 @@
 const { Builder, By, until } = require('selenium-webdriver');
+const { createDriver } = require('./createDriver.e2e.js');
 
 describe('Página de Criação de Produto', () => {
   let driver;
 
   beforeAll(async () => {
-    driver = await new Builder().forBrowser('chrome').build();
+    driver = await createDriver();
     await driver.get('http://localhost:3000/create/produto');
   }, 20000);
 
