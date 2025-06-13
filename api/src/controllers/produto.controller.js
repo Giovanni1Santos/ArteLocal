@@ -1,6 +1,6 @@
-import produtoService from '../services/produto.service'
+import produtoService from '../services/produto.service.js'
 
-const getEntities = async (res) => {
+const getEntities = async (req, res) => {
     try {
         await produtoService.getAllProducts(res);
     } catch (err) {
@@ -30,7 +30,7 @@ const deleteEntity = async (id, res) => {
 
 const postEntity = async (req, res) => {
 
-    if (!req.body || !req.body.email || !req.body.name || !req.body.telefone)
+    if (!req.body || !req.body.nome || !req.body.descricao || !req.body.disp || !req.body.userId)
         return res.status(400).json({ message: "Faltando informações." });
     try {
         await produtoService.registerProduct(req, res)

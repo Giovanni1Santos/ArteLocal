@@ -1,4 +1,4 @@
-import Produto from '../models/Produto'
+import Produto from '../models/Produto.js'
 
 const registerProduct = async (req, res) => {
 
@@ -14,7 +14,7 @@ const registerProduct = async (req, res) => {
 
     try {
         const createProduct = await Produto.create({
-            name,
+            nome,
             descricao,
             disp,
             userId

@@ -2,9 +2,10 @@ import express from 'express'
 import router from './src/routes/routes.js'
 
 import sequelize from './src/database/db.js';
-import User from './src/models/User.js';
+import User from './src/models/User.js'
 import Contato from './src/models/Contato.js';
 import RelationTables from './src/models/RelationTables.js';
+import Produto from './src/models/Produto.js';
 import cors from 'cors';
 
 
@@ -28,4 +29,4 @@ app.use(cors());
 app.use(express.json());
 app.use(router);
 
-app.listen(8080);
+app.listen(3080);
