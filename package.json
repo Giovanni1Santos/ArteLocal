@@ -1,0 +1,11 @@
+{
+    "name": "scripts",
+    "version": "1.0.0",
+    "scripts": {
+        "test:e2e": "cd client/tests/e2e && npm run test",
+        "test:jest": "cd api && npm run test:with-db",
+        "test:jest:clean": "cd api  && npm run test:clean",
+        "docker:up": "docker-compose up --build",
+        "docker:down": "docker-compose down"
+    }
+}

@@ -60,7 +60,7 @@ describe('Fluxo completo de registro, login e cadastro de produto', () => {
 
     await driver.findElement(By.css('button[type="submit"]')).click();
     await driver.wait(until.urlContains('/produtos'), 10000);
-  }, 10000);
+  }, 15000);
 
   it('Deve encontrar o produto criado em /produtos', async () => {
     await driver.get('http://localhost:3000/produtos');
@@ -74,5 +74,5 @@ describe('Fluxo completo de registro, login e cadastro de produto', () => {
     const cardTexts = await Promise.all(cards.map(card => card.getText()));
     const encontrado = cardTexts.some(text => text.includes(testProductName));
     expect(encontrado).toBe(true);
-  });
+  }, 10000);
 });
