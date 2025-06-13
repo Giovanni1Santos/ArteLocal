@@ -5,8 +5,9 @@
   "scripts": {
     "build": "react-router build",
     "dev": "react-router dev",
-    "start": "react-router-serve ./build/server/index.js",
-    "typecheck": "react-router typegen && tsc"
+    "start": "react-router-serve ./build/server/index.js --host",
+    "typecheck": "react-router typegen && tsc",
+    "test:e2e": "docker-compose -f ../docker-compose.yml run --rm selenium-test"
   },
   "dependencies": {
     "@react-router/node": "^7.5.3",
@@ -19,7 +20,8 @@
     "react-dom": "^19.1.0",
     "react-router": "^7.5.3",
     "react-router-dom": "^7.6.2",
-    "react-toastify": "^11.0.5"
+    "react-toastify": "^11.0.5",
+    "selenium-webdriver": "^4.33.0"
   },
   "devDependencies": {
     "@react-router/dev": "^7.5.3",

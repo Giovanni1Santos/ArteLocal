@@ -2,6 +2,7 @@ import { useState } from "react";
 import { usePostProduto } from "~/hooks/Produto/usePostProduto";
 import { getUserIdFromToken } from "~/util/AuthService";
 import { useNavigate } from "react-router";
+import { showToast } from "~/components/toast/Toast";
 
 export default function CreateProduto() {
     let router = useNavigate();
@@ -23,6 +24,7 @@ export default function CreateProduto() {
 
     const handleSubmit = (e: any) => {
         e.preventDefault();
+        showToast("Você precisa estar logado para realizar essa função!", "error")
         let userId = getUserIdFromToken();
         console.log("antes do if: " + userId)
         if (!userId) return;
