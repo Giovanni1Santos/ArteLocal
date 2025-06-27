@@ -1,8 +1,8 @@
 import axios from "axios";
-import API_URL from "~/constants/AppConstants";
+import API_URL from "../../constants/AppConstants";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import type { Login } from "~/interface/Login";
-import { showToast } from "~/components/toast/Toast";
+import type { Login } from "../../interface/Login";
+import { showToast } from "../../components/toast/Toast";
 
 
 

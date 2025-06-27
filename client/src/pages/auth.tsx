@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { useRegisterMutate } from '~/hooks/AuthHooks/useRegister';
-import { useLoginMutate } from '~/hooks/AuthHooks/useLogin';
+import { useRegisterMutate } from '../hooks/AuthHooks/useRegister';
+import { useLoginMutate } from '../hooks/AuthHooks/useLogin';
 import { useNavigate } from 'react-router-dom';
 
 export default function AuthPage() {

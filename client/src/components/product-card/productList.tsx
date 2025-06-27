@@ -1,4 +1,4 @@
-import type { Produto } from "~/interface/Produto";
+import type { Produto } from '../../interface/Produto'
 import ProductCard from "./ProductCard";
 
 
@@ -8,6 +8,7 @@ type ProductListProps = {
 
 
 const ProductList = ({ produto }: ProductListProps) => {
+    console.log(produto)
     return (
         <div className="p-4 md:p-8">
             <h1 className="text-3xl font-bold text-gray-900 mb-2">Nossos Produtos</h1>
@@ -16,7 +17,7 @@ const ProductList = ({ produto }: ProductListProps) => {
             {/* Grid responsivo para os cards de produtos */}
             <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 gap-8">
                 {produto.map(produto => (
-                    <ProductCard produto={produto} />
+                    <ProductCard key={produto.id} produto={produto} />
                 ))}
             </div>
         </div>
