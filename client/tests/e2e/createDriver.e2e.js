@@ -10,7 +10,7 @@ function createDriver() {
         .addArguments(
             '--no-sandbox',
             '--disable-dev-shm-usage',
-            '--headless',
+            //'--headless',
             '--disable-gpu',
             `--user-data-dir=${userDataDir}`
         );

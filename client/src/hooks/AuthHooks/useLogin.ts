@@ -1,8 +1,8 @@
 import axios from "axios";
-import API_URL from "~/constants/AppConstants";
+import API_URL from "../../constants/AppConstants";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import type { Login } from "~/interface/Login";
-import { showToast } from "~/components/toast/Toast";
+import type { Login } from "../../interface/Login";
+import { showToast } from "../../components/toast/Toast";
 
 
 
@@ -21,7 +21,7 @@ export function useLoginMutate() {
         mutationFn: postLogin,
         retry: 2,
         onSuccess: (data) => {
-            localStorage.setItem("token", data.token); // agora isso funciona
+            localStorage.setItem("token", data.token);
             console.log("Login bem-sucedido!");
             showToast("Usuário logado com sucesso!", "success")
 
