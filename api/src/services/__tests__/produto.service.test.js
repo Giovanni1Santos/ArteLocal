@@ -22,7 +22,7 @@ describe('Produto Service', () => {
       json: jest.fn()
     };
 
-    Produto.findOne.mockResolvedValue(true); // Simula produto já existente
+    Produto.findOne.mockResolvedValue(true);
 
     await produtoService.registerProduct(req, res);
 

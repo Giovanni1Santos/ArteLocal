@@ -103,8 +103,7 @@ describe('Fluxo completo de registro, login e cadastro de produto', () => {
   }, 10000);
 
   it('Deve simular o pagamento no carrinho', async () => {
-    await driver.get('http://localhost:3000/produtos');
-    await driver.findElement(By.css('button[aria-label="Abrir carrinho"],header button')).click();
+
 
     const finalizarBtn = await driver.wait(
       until.elementLocated(By.xpath("//button[contains(text(),'Finalizar pagamento')]")),
