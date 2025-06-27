@@ -28,15 +28,13 @@ const registerProduct = async (req, res) => {
 const deleteProduct = async (req, res) => {
 
     const id = req.params.id;
-    const userId = req.userId;
 
 
     try {
 
         const result = await Produto.destroy({
             where: {
-                id: id,
-                userId: userId
+                id: id
             }
         });
         if (result === 0) {

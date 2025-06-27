@@ -18,7 +18,7 @@ router.post("/login", userController.loginEntity);
 
 router.get("/produtos", produtoController.getEntities);
 router.post("/produto", verifyToken, produtoController.postEntity);
-router.delete("/produto", produtoController.deleteEntity);
+router.delete("/produto/:id", produtoController.deleteEntity);
 router.get("/produto/:id", produtoController.getEntitiesById);
 
 
