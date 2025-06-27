@@ -70,9 +70,52 @@ describe('Fluxo completo de registro, login e cadastro de produto', () => {
 
     expect(cards.length).toBeGreaterThan(0);
 
-    // Verifica se algum card contém o nome do produto
     const cardTexts = await Promise.all(cards.map(card => card.getText()));
     const encontrado = cardTexts.some(text => text.includes(testProductName));
     expect(encontrado).toBe(true);
   }, 5000);
+
+
+  it('Deve adicionar o produto ao carrinho', async () => {
+    await driver.get('http://localhost:3000/produtos');
+
+    await driver.wait(until.elementsLocated(By.css('.grid .block')), 10000);
+
+    const cards = await driver.findElements(By.css('.grid .block'));
+
+    for (let card of cards) {
+      const text = await card.getText();
+      if (text.includes(testProductName)) {
+        const addToCartButton = await card.findElement(By.xpath(".//button[contains(text(),'Adicionar ao carrinho')]"));
+        await addToCartButton.click();
+        break;
+      }
+    }
+
+    await driver.findElement(By.css('button[aria-label="Abrir carrinho"], header button')).click();
+
+    const carrinhoItem = await driver.wait(
+      until.elementLocated(By.xpath(`//*[contains(text(),'${testProductName}')]`)),
+      5000
+    );
+
+    expect(carrinhoItem).toBeDefined();
+  }, 10000);
+
+  it('Deve simular o pagamento no carrinho', async () => {
+    await driver.get('http://localhost:3000/produtos');
+    await driver.findElement(By.css('button[aria-label="Abrir carrinho"],header button')).click();
+
+    const finalizarBtn = await driver.wait(
+      until.elementLocated(By.xpath("//button[contains(text(),'Finalizar pagamento')]")),
+      5000
+    );
+    await finalizarBtn.click();
+
+    const toast = await driver.wait(
+      until.elementLocated(By.xpath("//*[contains(text(),'Pagamento realizado com sucesso!')]")),
+      5000
+    );
+    expect(toast).toBeDefined();
+  }, 10000);
 });

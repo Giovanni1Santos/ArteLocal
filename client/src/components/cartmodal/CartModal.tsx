@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import ProductImageIcon from "../product-card/ProductImageIcon";
 import { TrashIcon } from '@heroicons/react/24/outline';
+import { showToast } from "../toast/Toast";
 
 interface CartModalProps {
     isOpen: boolean;
@@ -55,6 +56,14 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose }) => {
         localStorage.setItem("carrinho", JSON.stringify(updatedCart));
     };
 
+    const handlePayment = () => {
+        showToast("Pagamento realizado com sucesso!", "success");
+        onClose();
+        // Opcional: limpar o carrinho após pagamento
+        localStorage.removeItem("carrinho");
+        setCartItems([]);
+    };
+
     if (!isOpen) return null;
 
     return (
@@ -105,7 +114,7 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose }) => {
 
                 <div className="p-4 border-t">
                     <button
-                        onClick={() => alert("Pagamento finalizado!")}
+                        onClick={handlePayment}
                         className="w-full bg-green-600 text-white py-2 px-4 rounded hover:bg-green-700 transition"
                     >
                         Finalizar pagamento
