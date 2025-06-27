@@ -6,7 +6,7 @@ describe('Página de Criação de Produto', () => {
 
   beforeAll(async () => {
     driver = await createDriver();
-    await driver.get('http://localhost:3000/create/produto');
+    await driver.get('http://localhost:3000/create');
   }, 20000);
 
   afterAll(async () => {

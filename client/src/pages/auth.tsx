@@ -20,7 +20,10 @@ export default function AuthPage() {
 
     useEffect(() => {
         if (isSuccessLogin) {
-            navigate('/produtos');
+            if (localStorage.getItem("token")) {
+                navigate('/produtos');
+            }
+
         }
     }, [isSuccessLogin, navigate]);
 

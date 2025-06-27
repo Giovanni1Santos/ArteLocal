@@ -1,3 +1,13 @@
+// Mocks
+jest.mock('../../models/Produto.js', () => ({
+  __esModule: true,
+  default: {
+    findOne: jest.fn(),
+    create: jest.fn()
+  }
+}));
+
+import Produto from '../../models/Produto.js';
 import produtoService from '../produto.service.js';
 
 describe('Produto Service', () => {
@@ -6,13 +16,17 @@ describe('Produto Service', () => {
       userId: 1,
       body: { nome: 'Produto', descricao: 'desc', disp: true }
     };
+
     const res = {
       status: jest.fn().mockReturnThis(),
       json: jest.fn()
     };
-    // Mock Produto.findOne para simular produto existente
-    produtoService.Produto = { findOne: jest.fn().mockResolvedValue(true) };
+
+    Produto.findOne.mockResolvedValue(true); // Simula produto já existente
+
     await produtoService.registerProduct(req, res);
+
     expect(res.status).toHaveBeenCalledWith(400);
+    expect(res.json).toHaveBeenCalledWith({ message: "Produto já cadastrado" });
   });
 });

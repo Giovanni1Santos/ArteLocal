@@ -21,7 +21,7 @@ export function useLoginMutate() {
         mutationFn: postLogin,
         retry: 2,
         onSuccess: (data) => {
-            localStorage.setItem("token", data.token); // agora isso funciona
+            localStorage.setItem("token", data.token);
             console.log("Login bem-sucedido!");
             showToast("Usuário logado com sucesso!", "success")
 
